@@ -4,10 +4,11 @@ declare(strict_types=1);
 namespace App\Controller;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/")
@@ -25,9 +26,15 @@ class ArticleController
      */
     public function show(string $slug): Response
     {
-        return new Response(sprintf(
-            'Future page to show one space article: %s!',
-            $slug
-        ));
+        $comments = [
+            'I ate normal rock once. It did NOT taste like bacon.',
+            'I ate normal rock once. It did NOT taste like bacon.',
+            'I ate normal rock once. It did NOT taste like bacon.',
+        ];
+
+        return $this->render('article/show.html.twig', [
+            'title'    => ucwords(str_replace('-', ' ', $slug)),
+            'comments' => $comments,
+        ]);
     }
 }
