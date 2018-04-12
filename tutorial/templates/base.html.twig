@@ -8,8 +8,6 @@
 
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-            <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
     </head>
 
@@ -47,9 +45,7 @@
             </div>
         </nav>
 
-        {% block body %}
-            <app-root></app-root>
-        {% endblock %}
+        {% block body %}{% endblock %}
 
         <footer class="footer">
             <div class="container text-center">
@@ -65,21 +61,6 @@
             <script>
                 $('.dropdown-toggle').dropdown();
             </script>
-        {% endblock %}
-        {% block app %}
-            {% if app.environment == 'dev' %}
-                <script src="{{ ng_dev_server_uri }}/main.js"></script>
-                <script src="{{ ng_dev_server_uri }}/polyfills.js"></script>
-                <script src="{{ ng_dev_server_uri }}/runtime.js"></script>
-                <script src="{{ ng_dev_server_uri }}/styles.js"></script>
-                <script src="{{ ng_dev_server_uri }}/vendor.js"></script>
-            {% elseif app.environment == 'prod' %}
-                <script src="{{ asset('ng-app/dist/ng-app/main.js') }}"></script>
-                <script src="{{ asset('ng-app/dist/ng-app/polyfills.js') }}"></script>
-                <script src="{{ asset('ng-app/dist/ng-app/runtime.js') }}"></script>
-                <script src="{{ asset('ng-app/dist/ng-app/styles.js') }}"></script>
-                <script src="{{ asset('ng-app/dist/ng-app/vendor.js') }}"></script>
-            {% endif %}
         {% endblock %}
     </body>
 </html>
